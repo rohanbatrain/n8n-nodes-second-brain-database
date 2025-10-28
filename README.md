@@ -1,8 +1,8 @@
 ![Banner image](https://user-images.githubusercontent.com/10284570/173569848-c624317f-42b1-45a6-ab09-f0ea3c247648.png)
 
-# n8n-nodes-starter
+# n8n-nodes-second-brain-database
 
-This starter repository helps you build custom integrations for [n8n](https://n8n.io). It includes example nodes, credentials, the node linter, and all the tooling you need to get started.
+This repository contains the "Second Brain Database" node for [n8n](https://n8n.io). It includes the node implementation, icons, credentials examples, and the tooling to build and test the node locally.
 
 ## Quick Start
 
@@ -25,9 +25,10 @@ This starts n8n with your nodes loaded and hot reload enabled.
 
 ## What's Included
 
-This starter repository includes two example nodes to learn from:
 
-- **[Example Node](nodes/Example/)** - A simple starter node that shows the basic structure with a custom `execute` method
+This repository includes example nodes to learn from and a production-ready example:
+
+- **[Second Brain Database Node](nodes/SecondBrainDatabase/)** - Programmatic-style node that demonstrates a custom `execute` method and node UI properties
 - **[GitHub Issues Node](nodes/GithubIssues/)** - A complete, production-ready example built using the **declarative style**:
   - **Low-code approach** - Define operations declaratively without writing request logic
   - Multiple resources (Issues, Comments)
@@ -95,12 +96,12 @@ This installs all required dependencies including the `@n8n/node-cli`.
 
 Browse the example nodes in [nodes/](nodes/) and [credentials/](credentials/) to understand the structure:
 
-- Start with [nodes/Example/](nodes/Example/) for a basic node
+-- Start with [nodes/SecondBrainDatabase/](nodes/SecondBrainDatabase/) for a basic programmatic node
 - Study [nodes/GithubIssues/](nodes/GithubIssues/) for a real-world implementation
 
 ### 4. Build Your Node
 
-Edit the example nodes to fit your use case, or create new node files by copying the structure from [nodes/Example/](nodes/Example/).
+Edit the example nodes to fit your use case, or create new node files by copying the structure from [nodes/SecondBrainDatabase/](nodes/SecondBrainDatabase/).
 
 > [!TIP]
 > If you want to scaffold a completely new node package, use `npm create @n8n/node` to start fresh with the CLI's interactive generator.
