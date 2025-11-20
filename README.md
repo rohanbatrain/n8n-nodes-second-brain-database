@@ -1,248 +1,204 @@
-![Banner image](https://user-images.githubusercontent.com/10284570/173569848-c624317f-42b1-45a6-ab09-f0ea3c247648.png)
+# Second Brain Database n8n Node
 
-# n8n-nodes-second-brain-database
+A comprehensive n8n community node for integrating with the Second Brain Database - a Family Financial Management System.
 
-This repository contains the "Second Brain Database" node for [n8n](https://n8n.io). It includes the node implementation, icons, credentials examples, and the tooling to build and test the node locally.
+## Features
 
-## Quick Start
+- **Complete API Coverage**: Access all 29+ API operations across 6 resource categories
+- **Family Financial Management**: Handle family accounts, token transfers, spending permissions, and member management
+- **Authentication Support**: JWT tokens, permanent tokens, and 2FA authentication
+- **Audit & Compliance**: Full audit logging and compliance reporting
+- **System Health Monitoring**: Database stats, rate limiting, and health checks
+- **Workspace Management**: Create and manage isolated workspaces
+- **Production Ready**: Comprehensive error handling, rate limiting awareness, and TypeScript support
+- **Client-Side Encryption**: Optional encryption support with conditional secret key
 
-> [!TIP]
-> **New to building n8n nodes?** The fastest way to get started is with `npm create @n8n/node`. This command scaffolds a complete node package for you using the [@n8n/node-cli](https://www.npmjs.com/package/@n8n/node-cli).
+## Installation
 
-**To create a new node package from scratch:**
-
-```bash
-npm create @n8n/node
-```
-
-**Already using this starter? Start developing with:**
-
-```bash
-npm run dev
-```
-
-This starts n8n with your nodes loaded and hot reload enabled.
-
-## What's Included
-
-
-This repository includes example nodes to learn from and a production-ready example:
-
-- **[Second Brain Database Node](nodes/SecondBrainDatabase/)** - Programmatic-style node that demonstrates a custom `execute` method and node UI properties
-- **[GitHub Issues Node](nodes/GithubIssues/)** - A complete, production-ready example built using the **declarative style**:
-  - **Low-code approach** - Define operations declaratively without writing request logic
-  - Multiple resources (Issues, Comments)
-  - Multiple operations (Get, Get All, Create)
-  - Two authentication methods (OAuth2 and Personal Access Token)
-  - List search functionality for dynamic dropdowns
-  - Proper error handling and typing
-  - Ideal for HTTP API-based integrations
-
-> [!TIP]
-> The declarative/low-code style (used in GitHub Issues) is the recommended approach for building nodes that interact with HTTP APIs. It significantly reduces boilerplate code and handles requests automatically.
-
-Browse these examples to understand both approaches, then modify them or create your own.
-
-## Finding Inspiration
-
-Looking for more examples? Check out these resources:
-
-- **[npm Community Nodes](https://www.npmjs.com/search?q=keywords:n8n-community-node-package)** - Browse thousands of community-built nodes on npm using the `n8n-community-node-package` tag
-- **[n8n Built-in Nodes](https://github.com/n8n-io/n8n/tree/master/packages/nodes-base/nodes)** - Study the source code of n8n's official nodes for production-ready patterns and best practices
-- **[n8n Credentials](https://github.com/n8n-io/n8n/tree/master/packages/nodes-base/credentials)** - See how authentication is implemented for various services
-
-These are excellent resources to understand how to structure your nodes, handle different API patterns, and implement advanced features.
-
-## Prerequisites
-
-Before you begin, install the following on your development machine:
-
-### Required
-
-- **[Node.js](https://nodejs.org/)** (v22 or higher) and npm
-  - Linux/Mac/WSL: Install via [nvm](https://github.com/nvm-sh/nvm)
-  - Windows: Follow [Microsoft's NodeJS guide](https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows)
-- **[git](https://git-scm.com/downloads)**
-
-### Recommended
-
-- Follow n8n's [development environment setup guide](https://docs.n8n.io/integrations/creating-nodes/build/node-development-environment/)
-
-> [!NOTE]
-> The `@n8n/node-cli` is included as a dev dependency and will be installed automatically when you run `npm install`. The CLI includes n8n for local development, so you don't need to install n8n globally.
-
-## Getting Started with this Starter
-
-Follow these steps to create your own n8n community node package:
-
-### 1. Create Your Repository
-
-[Generate a new repository](https://github.com/n8n-io/n8n-nodes-starter/generate) from this template, then clone it:
+### Option 1: Install from npm (Recommended)
 
 ```bash
-git clone https://github.com/<your-organization>/<your-repo-name>.git
-cd <your-repo-name>
+npm install n8n-nodes-second-brain-database
 ```
 
-### 2. Install Dependencies
+### Option 2: Manual Installation
 
-```bash
-npm install
-```
+1. Clone or download this repository
+2. Navigate to the project directory
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+4. Build the node:
+   ```bash
+   npm run build
+   ```
+5. Copy the built files to your n8n custom nodes directory
 
-This installs all required dependencies including the `@n8n/node-cli`.
+## Setup
 
-### 3. Explore the Examples
+### 1. Configure Credentials
 
-Browse the example nodes in [nodes/](nodes/) and [credentials/](credentials/) to understand the structure:
+Create a new credential of type "Second Brain Database API":
 
--- Start with [nodes/SecondBrainDatabase/](nodes/SecondBrainDatabase/) for a basic programmatic node
-- Study [nodes/GithubIssues/](nodes/GithubIssues/) for a real-world implementation
+- **Base URL**: Your Second Brain Database API endpoint (e.g., `https://api.secondbrain.com`)
+- **Permanent Token**: Your permanent API token for authentication
+- **Client-Side Encryption**: Enable if your API uses client-side encryption
+- **Secret Key**: Required only if client-side encryption is enabled
 
-### 4. Build Your Node
+### 2. Add Node to Workflow
 
-Edit the example nodes to fit your use case, or create new node files by copying the structure from [nodes/SecondBrainDatabase/](nodes/SecondBrainDatabase/).
+Search for "Second Brain Database" in the n8n node palette and add it to your workflow.
 
-> [!TIP]
-> If you want to scaffold a completely new node package, use `npm create @n8n/node` to start fresh with the CLI's interactive generator.
+## Resources and Operations
 
-### 5. Configure Your Package
+### Authentication
+- **Create Permanent Token**: Create a permanent API token for automation
+- **List Permanent Tokens**: List all permanent tokens for the user
+- **Login**: Authenticate user and get JWT token
+- **Refresh Token**: Refresh JWT token before expiration
+- **Revoke Permanent Token**: Revoke a permanent token by ID
+- **Setup 2FA**: Setup two-factor authentication
+- **Validate Token**: Validate JWT token and get user info
+- **Verify 2FA**: Verify 2FA code
 
-Update `package.json` with your details:
+### Family Management
+- **Accept Invitation**: Accept family invitation
+- **Create Family**: Create a new family account
+- **Emergency Access**: Request emergency access to frozen account
+- **Freeze Account**: Freeze family account for security
+- **Get Family**: Get family details by ID
+- **Invite Member**: Invite a new member to the family
+- **List Families**: List all families for the user
+- **Remove Member**: Remove a member from the family
+- **Set Spending Permissions**: Set spending limits and permissions
+- **Unfreeze Account**: Unfreeze family account
+- **Update Family**: Update family information
+- **Update Member Role**: Update member role and permissions
 
-- `name` - Your package name (must start with `n8n-nodes-`)
-- `author` - Your name and email
-- `repository` - Your repository URL
-- `description` - What your node does
+### SBD Token Operations
+- **Approve Request**: Approve pending token request
+- **Get Balance**: Get token balance for family account
+- **Get Transaction History**: Get transaction history for account
+- **List Pending Requests**: List pending token transfer requests
+- **Reject Request**: Reject pending token request
+- **Request Tokens**: Request token transfer approval
+- **Transfer Tokens**: Transfer SBD tokens between family accounts
 
-Make sure your node is registered in the `n8n.nodes` array.
+### Workspace Management
+- **Create Workspace**: Create a new workspace
+- **Delete Workspace**: Delete a workspace
+- **Get Workspace**: Get workspace details
+- **List Workspaces**: List all workspaces
+- **Update Workspace**: Update workspace information
 
-### 6. Develop and Test Locally
+### Audit & Compliance
+- **Export Audit Data**: Export audit data for external review
+- **Get Audit Logs**: Get audit logs for compliance
+- **Get Compliance Report**: Generate compliance report
 
-Start n8n with your node loaded:
+### System Health
+- **Database Stats**: Get database statistics
+- **Health Check**: Check system health status
+- **Rate Limit Status**: Check current rate limit status
 
-```bash
-npm run dev
-```
+## Usage Examples
 
-This command runs `n8n-node dev` which:
+### Basic Authentication Flow
 
-- Builds your node with watch mode
-- Starts n8n with your node available
-- Automatically rebuilds when you make changes
-- Opens n8n in your browser (usually http://localhost:5678)
+1. Add "Second Brain Database" node
+2. Select Resource: "Authentication"
+3. Select Operation: "Login"
+4. Configure login credentials (username/email + password)
+5. Optional: Add 2FA code if enabled
 
-You can now test your node in n8n workflows!
+### Token Transfer
 
-> [!NOTE]
-> Learn more about CLI commands in the [@n8n/node-cli documentation](https://www.npmjs.com/package/@n8n/node-cli).
+1. Add "Second Brain Database" node
+2. Select Resource: "SBD Token"
+3. Select Operation: "Transfer Tokens"
+4. Set Family ID (optional for some operations)
+5. Configure transfer details:
+   - To Family ID
+   - Amount
+   - Description (optional)
+   - Requires Approval (optional)
 
-### 7. Lint Your Code
+### Family Management
 
-Check for errors:
+1. Add "Second Brain Database" node
+2. Select Resource: "Family"
+3. Select Operation: "Invite Member"
+4. Set Family ID
+5. Configure invitation details
 
-```bash
-npm run lint
-```
+## Configuration Options
 
-Auto-fix issues when possible:
+### Family ID Parameter
+- **Optional for SBD Token Operations**: Can be left empty for operations that don't require a specific family context
+- **Required for Family Operations**: Must be provided for all family management operations
 
-```bash
-npm run lint:fix
-```
+### Query Parameters
+Available for list operations:
+- **Limit**: Maximum number of results (default: 50)
+- **Offset**: Number of results to skip (default: 0)
+- **Date Filters**: From/To date ranges for transaction and audit queries
 
-### 8. Build for Production
+### Transfer Details
+For token operations:
+- **To Family ID**: Recipient family account
+- **Amount**: Number of tokens to transfer
+- **Description**: Optional transfer description
+- **Requires Approval**: Whether transfer needs approval
 
-When ready to publish:
+## Error Handling
+
+The node includes comprehensive error handling for:
+- Authentication failures
+- Rate limiting (automatic retry with backoff)
+- Invalid parameters
+- Network connectivity issues
+- API-specific errors
+
+## Rate Limiting
+
+The node is aware of API rate limits and includes:
+- Automatic retry with exponential backoff
+- Rate limit status checking
+- Proper error messages for rate limit violations
+
+## Development
+
+### Building
 
 ```bash
 npm run build
 ```
 
-This compiles your TypeScript code to the `dist/` folder.
-
-### 9. Prepare for Publishing
-
-Before publishing:
-
-1. **Update documentation**: Replace this README with your node's documentation. Use [README_TEMPLATE.md](README_TEMPLATE.md) as a starting point.
-2. **Update the LICENSE**: Add your details to the [LICENSE](LICENSE.md) file.
-3. **Test thoroughly**: Ensure your node works in different scenarios.
-
-### 10. Publish to npm
-
-Publish your package to make it available to the n8n community:
+### Testing
 
 ```bash
-npm publish
+npm run test
 ```
 
-Learn more about [publishing to npm](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry).
+### Linting
 
-### 11. Submit for Verification (Optional)
+```bash
+npm run lint
+```
 
-Get your node verified for n8n Cloud:
+## API Documentation
 
-1. Ensure your node meets the [requirements](https://docs.n8n.io/integrations/creating-nodes/deploy/submit-community-nodes/):
-   - Uses MIT license ✅ (included in this starter)
-   - No external package dependencies
-   - Follows n8n's design guidelines
-   - Passes quality and security review
+For detailed API documentation, see the Second Brain Database API documentation at:
+- `/docs/family_api_endpoints_summary.md`
+- `/docs/auth_workflows_n8n.md`
+- `/docs/token_operations_n8n.md`
+- And other documentation files in the `/docs` directory
 
-2. Submit through the [n8n Creator Portal](https://creators.n8n.io/nodes)
+## Support
 
-**Benefits of verification:**
-
-- Available directly in n8n Cloud
-- Discoverable in the n8n nodes panel
-- Verified badge for quality assurance
-- Increased visibility in the n8n community
-
-## Available Scripts
-
-This starter includes several npm scripts to streamline development:
-
-| Script                | Description                                                      |
-| --------------------- | ---------------------------------------------------------------- |
-| `npm run dev`         | Start n8n with your node and watch for changes (runs `n8n-node dev`) |
-| `npm run build`       | Compile TypeScript to JavaScript for production (runs `n8n-node build`) |
-| `npm run build:watch` | Build in watch mode (auto-rebuild on changes)                    |
-| `npm run lint`        | Check your code for errors and style issues (runs `n8n-node lint`) |
-| `npm run lint:fix`    | Automatically fix linting issues when possible (runs `n8n-node lint --fix`) |
-| `npm run release`     | Create a new release (runs `n8n-node release`)                   |
-
-> [!TIP]
-> These scripts use the [@n8n/node-cli](https://www.npmjs.com/package/@n8n/node-cli) under the hood. You can also run CLI commands directly, e.g., `npx n8n-node dev`.
-
-## Troubleshooting
-
-### My node doesn't appear in n8n
-
-1. Make sure you ran `npm install` to install dependencies
-2. Check that your node is listed in `package.json` under `n8n.nodes`
-3. Restart the dev server with `npm run dev`
-4. Check the console for any error messages
-
-### Linting errors
-
-Run `npm run lint:fix` to automatically fix most common issues. For remaining errors, check the [n8n node development guidelines](https://docs.n8n.io/integrations/creating-nodes/).
-
-### TypeScript errors
-
-Make sure you're using Node.js v22 or higher and have run `npm install` to get all type definitions.
-
-## Resources
-
-- **[n8n Node Documentation](https://docs.n8n.io/integrations/creating-nodes/)** - Complete guide to building nodes
-- **[n8n Community Forum](https://community.n8n.io/)** - Get help and share your nodes
-- **[@n8n/node-cli Documentation](https://www.npmjs.com/package/@n8n/node-cli)** - CLI tool reference
-- **[n8n Creator Portal](https://creators.n8n.io/nodes)** - Submit your node for verification
-- **[Submit Community Nodes Guide](https://docs.n8n.io/integrations/creating-nodes/deploy/submit-community-nodes/)** - Verification requirements and process
-
-## Contributing
-
-Have suggestions for improving this starter? [Open an issue](https://github.com/n8n-io/n8n-nodes-starter/issues) or submit a pull request!
+For issues and feature requests, please check the main Second Brain Database repository.
 
 ## License
 
-[MIT](https://github.com/n8n-io/n8n-nodes-starter/blob/master/LICENSE.md)
+This n8n node package follows the same license as the Second Brain Database project.
